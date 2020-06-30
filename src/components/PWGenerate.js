@@ -9,33 +9,29 @@ class PasswordGenerate extends Component {
         containsSymbols: false
     }
 
-    // check to see if there is any number
     checkForNumbers(string){
-        var matches = string.match(/\d+/g);
+        const matches = string.match(/\d+/g);
         this.setState({
             containsNumbers: matches != null ? true : false
         });
     }
 
-    // check for upper case
     checkForUpperCase(string){
-        var matches = string.match(/[A-Z]/);
+        const matches = string.match(/[A-Z]/);
         this.setState({
             isUpperCase: matches != null ? true : false
         });
     }
 
-    // check for symbols
     checkForSymbols(string){
-        var symbols = new RegExp(/[^A-Z a-z0-9]/);
+        const symbols = new RegExp(/[^A-Z a-z0-9]/);
         this.setState({
             containsSymbols: symbols.test(string) ? true : false
         });
     }
 
-    // handle password
     handleChange = input => e =>{
-        let targetValue = e.target.value.replace(/\s/g, '');
+        const targetValue = e.target.value.replace(/\s/g, '');
         this.checkForNumbers(targetValue);
         this.checkForUpperCase(targetValue);
         this.checkForSymbols(targetValue);
@@ -45,10 +41,9 @@ class PasswordGenerate extends Component {
         });
     }
 
-    // submit form
 
     render(){
-        let {password,
+        const {password,
             passwordLength,
             containsNumbers,
             isUpperCase,
